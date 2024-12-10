@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build-and-push:
     timeout-minutes: 1440
-    runs-on: ubuntu-latest-m
+    runs-on: templates_runner
     permissions:
       contents: read
       packages: write
