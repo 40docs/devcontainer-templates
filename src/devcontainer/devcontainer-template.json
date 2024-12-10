@@ -1,0 +1,22 @@
+{
+  "description": "devcontainer",
+  "documentationURL": "https://github.com/robinmordasiewicz/templates/tree/main/src/devcontainer",
+  "id": "devcontainer",
+  "licenseURL": "https://github.com/robinmordasiewicz/templates/blob/main/LICENSE",
+  "name": "devcontainer",
+  "options": {
+    "imageVariant": {
+      "default": "jammy",
+      "description": "Ubuntu 22.04 on amd64 or arm64 are available.",
+      "proposals": [
+        "jammy"
+      ],
+      "type": "string"
+    }
+  },
+  "platforms": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "version": "0.1.75"
+}
