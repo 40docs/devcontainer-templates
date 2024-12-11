@@ -183,7 +183,6 @@
     "ghcr.io/robinmordasiewicz/features/azure-cli-persistence": {},
     "ghcr.io/robinmordasiewicz/features/container-dotfiles": {},
     "ghcr.io/robinmordasiewicz/features/continue": {},
-    "ghcr.io/robinmordasiewicz/features/fortidevsec": {},
     "ghcr.io/robinmordasiewicz/features/infracost": {},
     "ghcr.io/robinmordasiewicz/features/krew": {},
     "ghcr.io/robinmordasiewicz/features/lazygit": {},
