@@ -151,7 +151,6 @@
     "ghcr.io/guiyomh/features/vim": {},
     "ghcr.io/hspaans/devcontainer-features/ansible-lint": {},
     "ghcr.io/hwaien/devcontainer-features/match-host-time-zone": {},
-    "ghcr.io/iterative/features/nvtop": {},
     "ghcr.io/itsmechlark/features/postgresql": {},
     "ghcr.io/joshuanianji/devcontainer-features/aws-cli-persistence": {},
     "ghcr.io/joshuanianji/devcontainer-features/github-cli-persistence": {},
