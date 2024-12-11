@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build-and-push:
     timeout-minutes: 1440
-    runs-on: templates_runner
+    runs-on: template_runner
     permissions:
       contents: read
       packages: write
