@@ -18,5 +18,5 @@
     "linux/amd64",
     "linux/arm64"
   ],
-  "version": "0.1.75"
+  "version": "0.2.0"
 }
