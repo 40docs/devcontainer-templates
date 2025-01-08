@@ -43,7 +43,7 @@ jobs:
             snmp pollinate libpq-dev ruby-full subversion microsoft-edge-stable || true
 
       - name: Set up QEMU for multi-architecture builds
-        uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf
+        uses: docker/setup-qemu-action@53851d14592bedcffcf25ea515637cff71ef929a
         with:
           platforms: "linux/amd64"
 
