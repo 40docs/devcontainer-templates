@@ -62,7 +62,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build devcontainer
-        uses: devcontainers/ci@a56d055efecd725e8cfe370543b6071b79989cc8
+        uses: devcontainers/ci@44eb86b1bf0a6d7a5b0e0c463a3e3791081c1a95
         with:
           imageName: ghcr.io/${{ github.repository_owner }}/devcontainer
           #cacheFrom: ghcr.io/${{ github.repository_owner }}/devcontainer
