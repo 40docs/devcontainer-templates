@@ -133,4 +133,4 @@ docker push ghcr.io/robinmordasiewicz/devcontainer:latest
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/ajlab-org/devcontainer_templates/blob/main/src/devcontainer/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/40docs/devcontainer_templates/blob/main/src/devcontainer/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
