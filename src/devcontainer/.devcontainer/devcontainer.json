@@ -2,18 +2,6 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "mcp": {
-          "servers": {
-            "github": {
-              "type": "http",
-              "url": "https://api.githubcopilot.com/mcp/"
-            },
-            "playwright": {
-              "command": "npx",
-              "args": ["@playwright/mcp@latest"]
-            }
-          }
-        },
         "csharp.devkit.preferVsCodeFileSystemWatcher": true,
         "dotnetAcquisitionExtension.existingDotnetPath": [
           {
@@ -27,6 +15,20 @@
         ],
         "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/usr/share/dotnet/dotnet",
         "files.eol": "\n",
+        "mcp": {
+          "servers": {
+            "github": {
+              "type": "http",
+              "url": "https://api.githubcopilot.com/mcp/"
+            },
+            "playwright": {
+              "args": [
+                "@playwright/mcp@latest"
+              ],
+              "command": "npx"
+            }
+          }
+        },
         "remote.containers.copyGitConfig": false,
         "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
@@ -53,49 +55,6 @@
     }
   },
   "features": {
-    "ghcr.io/akhildevelops/devcontainer-features/pip": {
-      "packages": [
-        "aider-chat",
-        "ansible",
-        "ansible-creator",
-        "ansible-dev-environment",
-        "azure-cognitiveservices-speech",
-        "docs-chat-bot",
-        "fastapi",
-        "git-filter-repo",
-        "google-api-python-client",
-        "markitdown",
-        "mkdocs-add-teaser",
-        "mkdocs-awesome-pages-plugin",
-        "mkdocs-childpages-card-grid-plugin",
-        "mkdocs-enumerate-headings-plugin",
-        "mkdocs-exclude",
-        "mkdocs-git-authors-plugin",
-        "mkdocs-git-committers-plugin-2",
-        "mkdocs-github-admonitions-plugin",
-        "mkdocs-git-revision-date-localized-plugin",
-        "mkdocs-glightbox",
-        "mkdocs-literate-nav",
-        "mkdocs-material",
-        "mkdocs-material[imaging]",
-        "mkdocs-minify-plugin",
-        "mkdocs-monorepo-plugin",
-        "mkdocs-pdf-export-plugin",
-        "mkdocs-same-dir",
-        "mkdocs-section-index",
-        "mkdocs-table-reader-plugin",
-        "mkdocs-with-pdf",
-        "mkdocstrings[crystal]",
-        "mkdocstrings[python]",
-        "oauth2client",
-        "oterm",
-        "playwright",
-        "progressbar2",
-        "pydantic",
-        "pytest-playwright",
-        "uvicorn"
-      ]
-    },
     "ghcr.io/40docs/devcontainer-features/ansible-galaxy": {
       "extensions": [
         "fortinet.console",
@@ -209,7 +168,6 @@
         "nitayneeman.puppeteer-snippets",
         "okteto.remote-kubernetes",
         "omartawfik.github-actions-vscode",
-        "openai.chatgpt",
         "pomdtr.excalidraw-editor",
         "postman.postman-for-vscode",
         "redhat.ansible",
@@ -236,6 +194,49 @@
     "ghcr.io/40docs/devcontainer-features/ubuntu-restricted-extras": {},
     "ghcr.io/40docs/devcontainer-features/vimrc": {},
     "ghcr.io/40docs/devcontainer-features/yq": {},
+    "ghcr.io/akhildevelops/devcontainer-features/pip": {
+      "packages": [
+        "aider-chat",
+        "ansible",
+        "ansible-creator",
+        "ansible-dev-environment",
+        "azure-cognitiveservices-speech",
+        "docs-chat-bot",
+        "fastapi",
+        "git-filter-repo",
+        "google-api-python-client",
+        "markitdown",
+        "mkdocs-add-teaser",
+        "mkdocs-awesome-pages-plugin",
+        "mkdocs-childpages-card-grid-plugin",
+        "mkdocs-enumerate-headings-plugin",
+        "mkdocs-exclude",
+        "mkdocs-git-authors-plugin",
+        "mkdocs-git-committers-plugin-2",
+        "mkdocs-github-admonitions-plugin",
+        "mkdocs-git-revision-date-localized-plugin",
+        "mkdocs-glightbox",
+        "mkdocs-literate-nav",
+        "mkdocs-material",
+        "mkdocs-material[imaging]",
+        "mkdocs-minify-plugin",
+        "mkdocs-monorepo-plugin",
+        "mkdocs-pdf-export-plugin",
+        "mkdocs-same-dir",
+        "mkdocs-section-index",
+        "mkdocs-table-reader-plugin",
+        "mkdocs-with-pdf",
+        "mkdocstrings[crystal]",
+        "mkdocstrings[python]",
+        "oauth2client",
+        "oterm",
+        "playwright",
+        "progressbar2",
+        "pydantic",
+        "pytest-playwright",
+        "uvicorn"
+      ]
+    },
     "ghcr.io/audacioustux/devcontainers/k9s": {},
     "ghcr.io/azutake/devcontainer-features/go-packages-install": {
       "PACKAGES": [
@@ -415,6 +416,7 @@
   "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global push.autoSetupRemote true",
   "runArgs": [
     "--hostname=devcontainer",
-    "--label", "org.opencontainers.image.source=https://github.com/40docs/devcontainer_templates"
+    "--label",
+    "org.opencontainers.image.source=https://github.com/40docs/devcontainer_templates"
   ]
 }
