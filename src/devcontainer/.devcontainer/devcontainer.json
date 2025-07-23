@@ -1,5 +1,4 @@
 {
-  "containerUser": "vscode",
   "customizations": {
     "vscode": {
       "settings": {
@@ -415,6 +414,7 @@
   "name": "devcontainer",
   "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global push.autoSetupRemote true",
   "runArgs": [
-    "--hostname=devcontainer"
+    "--hostname=devcontainer",
+    "--label", "org.opencontainers.image.source=https://github.com/40docs/devcontainer_templates"
   ]
 }
