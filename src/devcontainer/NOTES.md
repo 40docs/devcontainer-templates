@@ -1,3 +1,16 @@
+gh auth login
+do shell script "launchctl setenv OLLAMA_ORIGINS '*'"
+do shell script "launchctl setenv OLLAMA_HOST \"0.0.0.0\""
+tell application "Ollama" to run
+docker system prune -a -f
+devcontainer up --workspace-folder ./
+devcontainer exec --workspace-folder ./ /usr/bin/zsh
+docker run --privileged --rm tonistiigi/binfmt --install all
+docker info -f '{{ .DriverStatus }}'
+devcontainer build --workspace-folder . --platform linux/arm64,linux/amd64 --image-name ghcr.io/robinmordasiewicz/devcontainer:latest --output type=docker --no-cache true
+docker login
+docker push ghcr.io/robinmordasiewicz/devcontainer:latest
+
 # devcontainer prebuild
 
 ## Create devcontainer config
@@ -8,7 +21,7 @@ mkdir .devcontainer
 
 ### create the following file devcontainer.json inside the .devcontainer folder
 
-* replace <my-github-repo-name> with your github repo name
+* replace `<my-github-repo-name>` with your github repo name
 
 ```json
 {
@@ -21,25 +34,22 @@ mkdir .devcontainer
 
 ## VSCode Plugin
 
-https://code.visualstudio.com/docs/devcontainers/containers
+[VSCode Devcontainers Documentation](https://code.visualstudio.com/docs/devcontainers/containers)
 
 ## Fonts
 
 For best results install Nerd fonts in VSCode:
 
-* Mac brew tap homebrew/cask-fonts && brew install --cask font-meslo-lg-nerd-font
-
-* Windows - Google it
+- Mac: `brew tap homebrew/cask-fonts && brew install --cask font-meslo-lg-nerd-font`
+- Windows: Google it
 
 1. Open VSCode Settings
-
 2. Search for "terminal.integrated.fontFamily"
-
 3. Type in "MesloLGS NF"
 
 ## mkdocs
 
-http://127.0.0.1:8000
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Terraform
 
@@ -50,23 +60,24 @@ tfenv use
 
 ## Github CLI
 
+```bash
 gh auth login
+```
 
 ## Ollama on Mac
 
-https://nonsequiturs.com/posts/run-ollama-in-the-menu-bar-on-macos-with-custom-host-bindings/?s=%23YOUREWELCOME
+[Ollama Mac Guide](https://nonsequiturs.com/posts/run-ollama-in-the-menu-bar-on-macos-with-custom-host-bindings/?s=%23YOUREWELCOME)
 
-* Open Script Editor and paste the following text
+* Open Script Editor and paste the following text:
 
-```
+```applescript
 do shell script "launchctl setenv OLLAMA_ORIGINS '*'"
 do shell script "launchctl setenv OLLAMA_HOST \"0.0.0.0\""
 tell application "Ollama" to run
 ```
 
-* export the script as an Application
-
-* add the appliation to login items
+* Export the script as an Application
+* Add the application to login items
 
 ## Troubleshooting docker
 
@@ -75,6 +86,7 @@ Clearing the cache sometimes helps with extensions not loading.
 ```bash
 docker system prune -a -f
 ```
+
 ## Create a container from the cli
 
 ```bash
@@ -95,18 +107,23 @@ sudo npm install -g @devcontainers/cli
 
 ### Linux
 
+```bash
 docker run --privileged --rm tonistiigi/binfmt --install all
+```
 
-https://docs.docker.com/storage/containerd/
+[Docker containerd storage docs](https://docs.docker.com/storage/containerd/)
+
+```bash
 docker info -f '{{ .DriverStatus }}'
+```
 
 ### Mac
 
 Disable the flag Use containerd for pulling and storing images within the feature of Docker Desktop to solve it.
-Disable Rosetta
+Disable Rosetta.
 You find the setting Use containerd for pulling and storing images in Docker Desktop, "Settings" > "Features in development"
 
-[Docker Desktop Mac](./docker-desktop-settings.png)
+![Docker Desktop Mac](./docker-desktop-settings.png)
 
 ```bash
 devcontainer build --workspace-folder . --platform linux/arm64,linux/amd64 --image-name ghcr.io/robinmordasiewicz/devcontainer:latest --output type=docker --no-cache true
