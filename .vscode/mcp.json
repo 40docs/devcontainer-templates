@@ -1,0 +1,127 @@
+{
+  "inputs": [
+    {
+      "description": "Perplexity API Key",
+      "id": "perplexity-api-key",
+      "password": true,
+      "type": "promptString"
+    }
+  ],
+  "servers": {
+    "Perplexity": {
+      "args": [
+        "perplexity-mcp"
+      ],
+      "command": "uvx",
+      "env": {
+        "PERPLEXITY_API_KEY": "${input:perplexity-api-key}",
+        "PERPLEXITY_MODEL": "sonar"
+      },
+      "type": "stdio"
+    },
+    "azure": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "node:20-bookworm",
+        "sh",
+        "-c",
+        "apt-get update && apt-get install -y libicu-dev && npx -y @azure/mcp@latest server start"
+      ],
+      "command": "docker",
+      "type": "stdio"
+    },
+    "filesystem": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--mount",
+        "type=bind,src=${workspaceFolder},dst=/projects/workspace",
+        "mcp/filesystem",
+        "/projects"
+      ],
+      "command": "docker"
+    },
+    "git": {
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=${workspaceFolder},dst=/workspace",
+        "mcp/git"
+      ],
+      "command": "docker"
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "kubernetes": {
+      "args": [
+        "-y",
+        "kubernetes-mcp-server@latest"
+      ],
+      "command": "npx",
+      "type": "stdio"
+    },
+    "markitdown": {
+      "args": [
+        "markitdown-mcp"
+      ],
+      "command": "uvx",
+      "type": "stdio"
+    },
+    "memory": {
+      "args": [
+        "run",
+        "-i",
+        "-v",
+        "claude-memory:/app/dist",
+        "--rm",
+        "mcp/memory"
+      ],
+      "command": "docker"
+    },
+    "microsoft-docs": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    },
+    "playwright": {
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "command": "npx"
+    },
+    "sequential-thinking": {
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/sequentialthinking"
+      ],
+      "command": "docker"
+    },
+    "terraform": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "hashicorp/terraform-mcp-server:latest"
+      ],
+      "command": "docker",
+      "type": "stdio"
+    },
+    "time": {
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/time"
+      ],
+      "command": "docker"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true
+  },
+  "chat.instructionsFilesLocations": {
+    "instructions": true
+  },
+  "chat.modeFilesLocations": {
+    "chatmodes": true
+  },
+  "chat.promptFilesLocations": {
+    "prompts": true
+  },
+  "chat.tools.autoApprove": true,
+  "dotnetAcquisitionExtension.existingDotnetPath": [
+    {
+      "extensionId": "MS-CST-E.vscode-devskim",
+      "path": "/usr/lib/dotnet/dotnet"
+    },
+    {
+      "extensionId": "ms-azuretools.vscode-azure-github-copilot",
+      "path": "/usr/lib/dotnet/dotnet"
+    }
+  ],
+  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/usr/lib/dotnet",
+  "extensions.autoUpdate": true,
+  "extensions.ignoreRecommendations": false,
+  "files.associations": {
+    "*.chatmode.md": "markdown",
+    "*.instructions.md": "markdown",
+    "*.prompt.md": "markdown"
+  },
+  "files.autoSave": "onWindowChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use the Conventional Commits format: <type>[optional scope]: <gitmoji> <imperative description>"
+    },
+    {
+      "text": "Allowed types: feat, fix, docs, style, refactor, perf, test, chore, ci"
+    },
+    {
+      "text": "Common scopes: api, ui, auth, config, deps, tests, ci, docs, core, utils"
+    },
+    {
+      "text": "Use imperative mood in the subject line: 'Add feature' not 'Added feature'"
+    },
+    {
+      "text": "Keep subject line concise: under 50 characters, no trailing period"
+    },
+    {
+      "text": "Use an appropriate gitmoji to enhance readability (e.g., \u2728, \ud83d\udc1b, \ud83d\udd27, \ud83d\udcdd)"
+    },
+    {
+      "text": "Include a scope in parentheses if relevant (e.g., api, ui, auth)"
+    },
+    {
+      "text": "For breaking changes: Add '!' after type/scope and 'BREAKING CHANGE:' in body"
+    },
+    {
+      "text": "Add an optional body with bullet points for context or motivation"
+    },
+    {
+      "text": "Reference issues using syntax like: Refs #123 or Closes #456"
+    },
+    {
+      "text": "Example: feat(api): \u2728 Add JWT token authentication"
+    },
+    {
+      "text": "Example: fix(ui): \ud83d\udc1b Fix button alignment on mobile"
+    },
+    {
+      "text": "Example: docs(readme): \ud83d\udcdd Update installation instructions"
+    },
+    {
+      "text": "Example: refactor(auth): \ud83d\udd28 Simplify token refresh logic"
+    },
+    {
+      "text": "Example: feat(api)!: \u2728 Change authentication method"
+    },
+    {
+      "text": "Example with body: feat(auth): \u2728 Add OAuth2 support\\n\\n- Implement Google OAuth2 provider\\n- Add user session management\\n- Update security policies\\n\\nCloses #123"
+    }
+  ],
+  "remote.autoForwardPorts": true,
+  "remote.autoForwardPortsSource": "output",
+  "remote.portForwarding.useLocalServer": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash"
+    },
+    "pwsh": {
+      "path": "/opt/microsoft/powershell/7/pwsh"
+    },
+    "tmux": {
+      "args": [
+        "new-session",
+        "-A",
+        "-s",
+        "vscode:${workspaceFolder}"
+      ],
+      "path": "/usr/bin/tmux"
+    },
+    "zsh": {
+      "path": "/usr/bin/zsh"
+    }
+  },
+  "update.showReleaseNotes": false,
+  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "workbench.welcomePage.enabled": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false
+}
