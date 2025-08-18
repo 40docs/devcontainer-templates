@@ -1,22 +1,10 @@
 # DevContainer Templates
 
-Comprehensive development container templates for the 40docs platform, providing a fully-featured development environment with 75+ tools and integrations for cloud-native development, security analysis, and DevOps workflows.
+Enterprise-grade development container templates for the 40docs platform, providing a comprehensive cloud-native development environment with extensive tooling for DevOps, security analysis, and modern application development.
 
-## Overview
+## 🚀 Quick Start
 
-This repository contains devcontainer templates built on Ubuntu 22.04 with extensive tooling for:
-
-- **Cloud Development**: Azure, AWS, Google Cloud integration
-- **Container & Kubernetes**: Docker, kubectl, helm, k9s, and related tools  
-- **Security Analysis**: Lacework, DevSkim, Checkov, Terrascan, Trivy
-- **Infrastructure as Code**: Terraform ecosystem, Ansible, Bicep
-- **Development Languages**: Python, Node.js, Go, Java, .NET, PHP
-- **Documentation**: MkDocs with extensive plugin ecosystem
-- **AI/ML Development**: CUDA support, Ollama, Python ML packages
-
-## Quick Start
-
-### Using the Pre-built Container
+### Use the Pre-built Container
 
 Create a `.devcontainer/devcontainer.json` file in your project:
 
@@ -29,40 +17,58 @@ Create a `.devcontainer/devcontainer.json` file in your project:
 }
 ```
 
-### Using DevContainers CLI
+Then open your project in VS Code with the Dev Containers extension installed.
 
-```bash
-# Create container from CLI
-devcontainer up --workspace-folder ./
+## 📦 What's Included
 
-# Attach to running container
-devcontainer exec --workspace-folder ./ /usr/bin/zsh
-```
+### Development Environments
+- **Languages**: Python 3.12, Node.js 18, Go, Java, .NET 8.0, PHP
+- **Frameworks**: FastAPI, Express, React, Vue, Angular support
+- **Package Managers**: npm, pip, cargo, composer, maven
 
-## Development Setup
+### Cloud & Infrastructure Tools
+- **Cloud Platforms**: Azure CLI, AWS CLI, Google Cloud CLI
+- **Infrastructure as Code**: Terraform (with tfenv), Ansible, Bicep
+- **Container Orchestration**: Docker, Kubernetes (kubectl, helm, k9s, kubectx)
+- **GitOps**: Flux, ArgoCD support
+
+### Security & Compliance
+- **Security Scanning**: Lacework CLI, DevSkim, Checkov, Terrascan, Trivy
+- **Vulnerability Management**: Automated security scanning in CI/CD
+- **Compliance**: OWASP, CIS benchmark tools
+
+### AI/ML Development
+- **GPU Support**: CUDA 12.4 toolkit, NVIDIA container runtime
+- **AI Tools**: Ollama integration
+- **ML Libraries**: TensorFlow, PyTorch, scikit-learn support
+
+### Documentation & Productivity
+- **Documentation**: MkDocs Material with 15+ plugins
+- **Diagramming**: Mermaid, Draw.io integration
+- **IDE**: 75+ pre-configured VS Code extensions
+- **Terminal**: ZSH with Oh My Zsh, tmux for persistent sessions
+
+## 🛠️ Development Setup
 
 ### Prerequisites
 
-Install DevContainers CLI:
+Install the DevContainers CLI:
 ```bash
 sudo npm install -g @devcontainers/cli
 ```
 
-### Multi-Architecture Building
+### Building the Container
 
-Enable multi-architecture support:
+#### Enable Multi-Architecture Support
 ```bash
 # Create multi-platform builder
 docker buildx create --name multiplatform --bootstrap --use
-docker buildx ls
 
 # Enable emulation for cross-platform builds
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 
-### Building the Container
-
-Build multi-platform container:
+#### Build for Multiple Architectures
 ```bash
 devcontainer build --workspace-folder . \
   --platform linux/arm64,linux/amd64 \
@@ -71,8 +77,7 @@ devcontainer build --workspace-folder . \
   --no-cache true
 ```
 
-### Publishing to Registry
-
+#### Push to Registry
 ```bash
 # Authenticate to GitHub Container Registry
 docker login ghcr.io
@@ -81,113 +86,94 @@ docker login ghcr.io
 docker push ghcr.io/40docs/devcontainer:latest
 ```
 
-## Included Tools & Features
+## 💻 Platform-Specific Configuration
 
-### Cloud & Infrastructure
-- Azure CLI with Bicep support
-- AWS CLI with session persistence
-- Google Cloud CLI with persistence
-- Terraform with tfenv version management
-- Ansible with Fortinet collections
-- Kubernetes tools (kubectl, helm, k9s, kubectx)
+### macOS Setup
 
-### Security & Compliance
-- Lacework CLI and extensible reporting
-- DevSkim security analyzer
-- Checkov IaC security scanning
-- Terrascan policy scanning
-- Trivy vulnerability scanner
-
-### Development Languages & Runtimes
-- Python 3.12 with extensive ML packages
-- Node.js 18 with global development tools
-- Go with package installation tools
-- Java development kit
-- .NET 8.0 with C# DevKit
-- PHP development environment
-
-### Documentation & Publishing
-- MkDocs Material with 15+ plugins
-- Markdown tools and linting
-- Draw.io integration
-- Mermaid diagram support
-
-### AI & Machine Learning
-- CUDA 12.4 support with toolkit
-- NVIDIA container runtime
-- Ollama integration
-- Python ML packages (FastAPI, Pydantic, etc.)
-
-## Platform-Specific Setup
-
-### macOS Configuration
-
-Install Nerd fonts for optimal terminal experience:
+1. **Install Nerd Fonts** for optimal terminal experience:
 ```bash
 brew tap homebrew/cask-fonts
 brew install --cask font-meslo-lg-nerd-font
 ```
 
-Configure Docker Desktop:
-1. Disable "Use containerd for pulling and storing images"
-2. Disable Rosetta emulation
-3. Find settings in Docker Desktop > Settings > Features in development
+2. **Configure VS Code**:
+   - Open Settings → Search "terminal.integrated.fontFamily"
+   - Set to "MesloLGS NF"
 
-### Ollama Setup (macOS)
+3. **Docker Desktop Settings**:
+   - Disable "Use containerd for pulling and storing images"
+   - Disable Rosetta emulation
+   - Find in: Settings → Features in development
 
-Configure Ollama for container access:
+4. **Ollama Configuration** (for AI development):
 ```applescript
 do shell script "launchctl setenv OLLAMA_ORIGINS '*'"
 do shell script "launchctl setenv OLLAMA_HOST \"0.0.0.0\""
 tell application "Ollama" to run
 ```
+Save as Application and add to login items.
 
-Save as an Application and add to login items.
+### Linux Setup
 
-### Linux Configuration
-
-Ensure proper Docker buildx support:
+Ensure QEMU support for multi-architecture builds:
 ```bash
 docker run --privileged --rm tonistiigi/binfmt --install all
 docker info -f '{{ .DriverStatus }}'
 ```
 
-## VSCode Integration
+## 🔧 Usage
 
-### Required Extensions
+### CLI Operations
 
-The container includes 75+ pre-installed extensions covering:
-- Language support (Python, Go, Java, C#, PHP)
-- Cloud tools (Azure, AWS, Kubernetes)
-- Security scanning (Lacework, DevSkim)
-- Documentation (Markdown, Mermaid)
-- Development productivity (GitLens, Copilot)
+```bash
+# Create and start container
+devcontainer up --workspace-folder ./
 
-### Terminal Configuration
+# Attach to running container
+devcontainer exec --workspace-folder ./ /usr/bin/zsh
 
-Configured terminal profiles:
-- **zsh**: Default shell with Oh My Zsh and plugins
-- **bash**: Standard bash shell
-- **tmux**: Persistent session management
-- **pwsh**: PowerShell 7.4.2
+# Access specific services
+# MkDocs: http://127.0.0.1:8000
+```
 
-## Environment Features
+### Development Workflows
+
+```bash
+# GitHub authentication
+gh auth login
+
+# Terraform management
+tfenv install
+tfenv use
+
+# Clear Docker cache (troubleshooting)
+docker system prune -a -f
+```
+
+## 🤖 AI & Automation Features
 
 ### MCP Server Integration
-- GitHub Copilot MCP server
-- Playwright testing server
+- GitHub Copilot MCP server for AI assistance
+- Playwright server for browser automation and testing
 
-### Development Services
-- MkDocs development server: http://127.0.0.1:8000
-- Automatic port forwarding for development services
-- PostgreSQL database for development
+### Persistent Configurations
+- Shell history and preferences
+- CLI authentication tokens (GitHub, Azure, AWS, GCloud)
+- Git configuration and SSH keys
 
-### Persistence Features
-- Shell history persistence
-- CLI authentication persistence (gh, az, aws, gcloud)
-- Git configuration preservation
+## 📋 CI/CD Integration
 
-## Troubleshooting
+The container is automatically built and published when:
+- Changes are made to `src/devcontainer/.devcontainer/devcontainer.json`
+- Manual workflow dispatch is triggered
+- Repository dispatch events occur from feature updates
+
+### Build Pipeline
+- **Runner**: Custom GitHub runner (`template_runner`)
+- **Timeout**: 24 hours for complex multi-architecture builds
+- **Registry**: Publishes to `ghcr.io/40docs/devcontainer:latest`
+
+## 🐛 Troubleshooting
 
 ### Common Issues
 
@@ -196,17 +182,40 @@ Configured terminal profiles:
 docker system prune -a -f
 ```
 
-**Multi-architecture build issues:**
-Ensure QEMU and buildx are properly configured:
+**Multi-architecture build failures:**
 ```bash
+# Verify QEMU installation
 docker buildx inspect multiplatform
+
+# Reinstall BINFMT support
 docker run --privileged --rm tonistiigi/binfmt --install all
 ```
 
-**Performance issues:**
-The container includes extensive tooling. Consider customizing the devcontainer.json to disable unused features for better performance.
+**Performance optimization:**
+- The container includes extensive tooling
+- Consider customizing `devcontainer.json` to disable unused features
+- Use resource limits in Docker settings for constrained environments
 
-## Contributing
+## 📝 Repository Structure
+
+```
+devcontainer-templates/
+├── src/
+│   └── devcontainer/
+│       ├── .devcontainer/
+│       │   └── devcontainer.json    # Main configuration
+│       ├── README.md                 # Template documentation
+│       ├── NOTES.md                  # Quick reference
+│       └── docker-desktop-settings.png
+├── .github/
+│   └── workflows/
+│       └── devcontainer.yml          # CI/CD pipeline
+├── LICENSE                           # MIT License
+├── CLAUDE.md                         # AI assistant guidelines
+└── README.md                         # This file
+```
+
+## 🤝 Contributing
 
 This repository uses pre-commit hooks for quality assurance:
 - JSON validation and formatting
@@ -218,11 +227,20 @@ Install pre-commit hooks:
 pre-commit install
 ```
 
-## CI/CD
+## 📄 License
 
-The container is automatically built and published on:
-- Changes to `src/devcontainer/.devcontainer/devcontainer.json`
-- Manual workflow dispatch
-- Repository dispatch events from feature updates
+MIT License - See [LICENSE](LICENSE) file for details.
 
-Build runs on custom GitHub runners with 24-hour timeout for complex multi-architecture builds.
+## 🔗 Related Resources
+
+- [VS Code Dev Containers Documentation](https://code.visualstudio.com/docs/devcontainers/containers)
+- [40docs Platform](https://github.com/40docs)
+- [DevContainer Features](https://github.com/40docs/devcontainer-features)
+
+## 🏷️ Version
+
+Current image: `ghcr.io/40docs/devcontainer:latest`
+
+---
+
+*Part of the 40docs Documentation as Code ecosystem - Managing 25+ interconnected repositories through automation and best practices.*
