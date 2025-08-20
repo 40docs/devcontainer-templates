@@ -18,7 +18,7 @@ concurrency:
 jobs:
   build-and-push:
     timeout-minutes: 1440
-    runs-on: template_runner
+    runs-on: CLOUDSHELL
     permissions:
       contents: read
       packages: write
