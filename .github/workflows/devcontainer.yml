@@ -36,6 +36,7 @@ jobs:
 
       - name: Build container
         run: |
+          export PATH="/usr/local/nvm/versions/node/v24.6.0/bin:$PATH"
           devcontainer build \
             --workspace-folder src/devcontainer \
             --image-name ghcr.io/${{ github.repository_owner }}/devcontainer \
